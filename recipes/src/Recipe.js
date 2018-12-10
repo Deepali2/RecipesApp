@@ -1,7 +1,15 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import './Recipe.css';
 
+
 class Recipe extends Component {
+  static propTypes = {
+    img: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    ingredients: PropTypes.arrayOf(PropTypes.string).isRequired,
+    instructions: PropTypes.string.isRequired
+  }
   render() {
     const {title, ingredients, img, method} = this.props;
     
@@ -13,13 +21,13 @@ class Recipe extends Component {
         <div className='recipe-card-content'>
           <h3 className='recipe-title'>{title}</h3>
           <h4>Ingredients:</h4>
-          <ul>
+          <ul className='recipe-list'>
             {ingredients.map((ingredient, index) => {
               return <li key={index}>{ingredient}</li>
             })}
           </ul>
-          <h4>Method</h4>
-          <p> {method}</p>
+          <h4>Method:</h4>
+          <p className='recipe-method'>{method}</p>
         </div>        
       </div>
     );
