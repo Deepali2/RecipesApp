@@ -17,6 +17,7 @@ class RecipeInput extends Component {
   };
   this.handleChangeIng = this.handleChangeIng.bind(this);
   this.handleChange = this.handleChange.bind(this);
+  this.handleNewIngredient = this.handleNewIngredient.bind(this);
 }
 
   handleChangeIng(e) {
@@ -31,13 +32,18 @@ class RecipeInput extends Component {
      this.setState({[e.target.name]: e.target.value});
   }
 
+  handleNewIngredient(e) {
+    const{ingredients} = this.state;
+    this.setState({ingredients: [...ingredients, '']});
+  }
+
   render() {
     //destructure all the values from state
     const {title, img, method, ingredients} = this.state;
     const {onClose} = this.props;
     let inputs = ingredients.map((ing, index) => (
       <div className='recipe-form-line' key={`ingredient-${index}`}>
-        <label>{index + 1}
+        <label>{index + 1}.
           <input 
             name={`ingredient-${index}`}
             placeholder='Ingredient'
