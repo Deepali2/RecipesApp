@@ -8,10 +8,12 @@ class Recipe extends Component {
     img: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     ingredients: PropTypes.arrayOf(PropTypes.string).isRequired,
-    instructions: PropTypes.string.isRequired
+    instructions: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
+    onDelete: PropTypes.func.isRequired
   }
   render() {
-    const {title, ingredients, img, method} = this.props;
+    const {title, ingredients, img, method, id, onDelete} = this.props;
     
     return (
       <div className='recipe-card'>
@@ -28,6 +30,7 @@ class Recipe extends Component {
           </ul>
           <h4>Method:</h4>
           <p className='recipe-method'>{method}</p>
+          <button type='button' onClick={()=> onDelete(id)}>DELETE</button>
         </div>        
       </div>
     );
