@@ -10,7 +10,7 @@ class RecipeApp extends Component {
     this.state = {
       recipes: [
         {
-          id: 1,
+          id: 0,
           img: 'https://i.imgur.com/WsKNvgq.jpg',
           title: 'Gulab Jamun',
           ingredients: 
@@ -29,28 +29,41 @@ class RecipeApp extends Component {
           
         },
         {
-          id: 2,
+          id: 1,
           img: 'ghevar.jpg',
           title: 'Ghevar',
           ingredients: ['pasta', 'water', 'tomatoes'],
           method: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. ",
         },
         {
-          id: 3,
+          id: 2,
           img: 'imgs/photo.jpg',
           title: 'Rasgulla',
           ingredients: ['pasta', 'water', 'tomatoes'],
           method: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. ",
         }
       ],
-      nextRecipeId: 4,
+      nextRecipeId: 3,
     };
+
+    this.handleSave= this.handleSave.bind(this);
   }
+
+  handleSave(recipe) {
+    this.setState((prevState, props) => {
+      const newRecipe = {...recipe, id: this.state.nextRecipeId};
+      return {
+        nextRecipeId: prevState.nextRecipeId + 1,
+        recipes: [...this.state.recipes, newRecipe]
+      }
+    });
+  }
+
   render() {
     return (
       <div className="App">
       <Navbar />
-      <RecipeInput />
+      <RecipeInput onSave={this.handleSave}/>
       <RecipeList recipes={this.state.recipes}/>
       </div>
     );
