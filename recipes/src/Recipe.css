@@ -15,7 +15,7 @@
 }
 
 .recipe-card-img {   
-  height: 41%; 
+  height: 40%; 
   overflow: hidden;
 }
 
@@ -31,10 +31,19 @@
 
 .recipe-title {
   margin: 0;
+  padding-top: 0;
 }
 
 .recipe-method {
   overflow: auto; 
+}
+
+.delete-button{
+  border: none;
+  cursor: pointer;
+  font-size: 0.9em;
+  padding-top: 10px;
+  text-shadow: 0 2px 2px #fff;
 }
 
 

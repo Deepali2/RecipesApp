@@ -30,7 +30,7 @@ class Recipe extends Component {
           </ul>
           <h4>Method:</h4>
           <p className='recipe-method'>{method}</p>
-          <button type='button' onClick={()=> onDelete(id)}>DELETE</button>
+          <button type='button' className='delete-button' onClick={()=> onDelete(id)}>DELETE</button>
         </div>        
       </div>
     );
